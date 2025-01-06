@@ -2,6 +2,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain;
 
+public enum TodoStatus
+{
+    None = 0,
+    Due = 1,
+    Overdue = 2,
+    Completed = 3,
+    Deleted = 99
+}
+
 public class TodoItem
 {
     public Guid Id { get; set; }
@@ -12,7 +21,7 @@ public class TodoItem
 
     public string? Description { get; set; }
 
-    public int Status { get; set; }
+    public TodoStatus Status { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
