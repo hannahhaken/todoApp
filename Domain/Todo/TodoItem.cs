@@ -8,7 +8,7 @@ public class TodoItem
 
     public string? Description { get; set; }
 
-    public TodoStatus Status { get; set; } = TodoStatus.Due;
+    public TodoStatus Status { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
