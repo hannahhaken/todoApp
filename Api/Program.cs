@@ -1,4 +1,9 @@
+using Api.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = "Data Source=Data/todoapp.db";
+DatabaseInitializer.Initialize(connectionString);
 
 builder.Services.AddControllers();
 
