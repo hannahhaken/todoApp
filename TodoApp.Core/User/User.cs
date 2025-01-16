@@ -1,4 +1,4 @@
-namespace Domain.User;
+namespace TodoApp.Core.User;
 
 public class User
 {

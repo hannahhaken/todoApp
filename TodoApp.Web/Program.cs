@@ -1,4 +1,4 @@
-using Blazor.Components;
+using TodoApp.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
