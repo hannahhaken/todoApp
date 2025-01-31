@@ -2,7 +2,7 @@ namespace TodoApp.Core.User;
 
 public class User
 {
-    public Guid Id { get; private set; }
+    public required string Id { get; set; }
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public required string Email { get; set; }
@@ -13,7 +13,6 @@ public class User
 
     public User(string firstName, string lastName, string email, string password)
     {
-        Id = Guid.NewGuid();
         FirstName = firstName;
         LastName = lastName;
         Email = email;

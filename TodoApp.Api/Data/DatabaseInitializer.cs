@@ -1,5 +1,7 @@
-using Dapper;
+using DbUp;
 using Microsoft.Data.Sqlite;
+using System;
+using System.IO;
 
 namespace TodoApp.Api.Data;
 
@@ -7,39 +9,41 @@ public static class DatabaseInitializer
 {
     public static void Initialize(string connectionString)
     {
+        EnsureDatabaseExists(connectionString);
+
+        var upgrader = DeployChanges.To
+            .SqliteDatabase(connectionString)
+            .WithScriptsFromFileSystem("Data/Scripts")
+            .LogToConsole()
+            .Build();
+
+        var result = upgrader.PerformUpgrade();
+
+        if (!result.Successful)
+        {
+            throw new Exception($"Error while upgrading database: {result.Error}");
+        }
+
+        Console.WriteLine("Database initialised and migrations applied successfully!");
+
         using var connection = new SqliteConnection(connectionString);
         connection.Open();
+    }
 
-        const string createUserTable = @"
-            CREATE TABLE IF NOT EXISTS Users (
-                Id TEXT PRIMARY KEY,
-                FirstName TEXT NOT NULL,
-                LastName TEXT NOT NULL,
-                Email TEXT NOT NULL UNIQUE,
-                Password TEXT NOT NULL,
-                CreatedAt TEXT NOT NULL,
-                UpdatedAt TEXT NOT NULL,
-                LastLoggedInAt TEXT
-            );
-        ";
+    private static void EnsureDatabaseExists(string connectionString)
+    {
+        var builder = new SqliteConnectionStringBuilder(connectionString);
+        var databasePath = builder.DataSource;
 
-        const string createTodoTable = @"
-            CREATE TABLE IF NOT EXISTS TodoItems (
-                Id TEXT PRIMARY KEY,
-                Title TEXT NOT NULL,
-                Description TEXT,
-                Status INTEGER NOT NULL,
-                CreatedAt TEXT NOT NULL,
-                UpdatedAt TEXT NOT NULL,
-                DueAt TEXT,
-                CompletedAt TEXT,
-                DeletedAt TEXT,
-                UserId TEXT NOT NULL,
-                FOREIGN KEY (UserId) REFERENCES Users(Id)
-            );
-        ";
+        if (string.IsNullOrWhiteSpace(databasePath))
+        {
+            throw new ArgumentException("Invalid connection string", nameof(connectionString));
+        }
 
-        connection.Execute(createUserTable);
-        connection.Execute(createTodoTable);
+        if (!File.Exists(databasePath))
+        {
+            Console.WriteLine($"Database file not found at {databasePath}. Creating a new database...");
+            File.Create(databasePath).Dispose();
+        }
     }
 }

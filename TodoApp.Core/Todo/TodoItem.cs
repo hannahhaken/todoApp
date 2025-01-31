@@ -3,36 +3,25 @@ namespace TodoApp.Core.Todo;
 public sealed class TodoItem
 {
     public required string Id { get; set; }
-    
     public required string Title { get; set; }
-
     public string? Description { get; set; }
-
     public TodoStatus Status { get; set; }
-    
     public required DateTime CreatedAt { get; set; }
-    
     public required DateTime UpdatedAt { get; set; }
-    
     public DateTime? DueAt { get; set; }
-    
     public DateTime? CompletedAt { get; set; }
-    
     public DateTime? DeletedAt { get; set; }
-
     public required string CreatedById { get; set; }
-    
     public string? AssignedToId { get; set; }
     
     public TodoItem(string userId, string title, string? description = null, DateTime? dueAt = null)
     {
-        Id = userId;
+        AssignedToId = userId;
         Title = title;
         Description = description;
         Status = TodoStatus.Due;
         DueAt = dueAt;
         CreatedAt = DateTime.UtcNow;
-        DeletedAt = null;
         UpdatedAt = DateTime.UtcNow;
     }
 
