@@ -8,13 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.1.35" />
-        <PackageReference Include="dbup-core" Version="6.0.4" />
-        <PackageReference Include="dbup-sqlite" Version="6.0.1" />
+        <ProjectReference Include="..\TodoApp.Core\TodoApp.Core.csproj"/>
+        <PackageReference Include="Dapper" Version="2.1.35"/>
+        <PackageReference Include="dbup-core" Version="6.0.4"/>
+        <PackageReference Include="dbup-sqlite" Version="6.0.1"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Models\"/>
     </ItemGroup>
 
 </Project>
