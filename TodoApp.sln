@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.UnitTests", "TodoAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.IntegrationTests", "TodoApp.IntegrationTests\TodoApp.IntegrationTests.csproj", "{98C7FA60-F4F4-432D-AE4D-D2E729E40ED8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.Playground", "TodoApp.Playground\TodoApp.Playground.csproj", "{3D4D49C2-D95A-4BD9-8CBD-D3ACD3972F4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{98C7FA60-F4F4-432D-AE4D-D2E729E40ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98C7FA60-F4F4-432D-AE4D-D2E729E40ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98C7FA60-F4F4-432D-AE4D-D2E729E40ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D4D49C2-D95A-4BD9-8CBD-D3ACD3972F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D4D49C2-D95A-4BD9-8CBD-D3ACD3972F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D4D49C2-D95A-4BD9-8CBD-D3ACD3972F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D4D49C2-D95A-4BD9-8CBD-D3ACD3972F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
